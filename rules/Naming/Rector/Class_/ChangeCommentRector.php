@@ -73,7 +73,7 @@ CODE_SAMPLE
             return null;
         }
 
-        $phpDocInfo->getTags();
+        $phpDocInfo->addBareTag();
 
         return $node;
     }
