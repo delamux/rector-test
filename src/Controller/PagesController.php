@@ -45,7 +45,7 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
-        if (!$path) {
+        if ($path === []) {
             return $this->redirect('/');
         }
         if (in_array('..', $path, true) || in_array('.', $path, true)) {
@@ -59,7 +59,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage'));
+        $this->set(['page' => $page, 'subpage' => $subpage]);
 
         try {
             return $this->render(implode('/', $path));

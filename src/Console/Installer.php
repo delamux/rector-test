@@ -56,7 +56,7 @@ class Installer
     {
         $io = $event->getIO();
 
-        $rootDir = dirname(dirname(__DIR__));
+        $rootDir = dirname(__DIR__, 2);
 
         static::createAppLocalConfig($rootDir, $io);
         static::createWritableDirectories($rootDir, $io);
@@ -139,7 +139,7 @@ class Installer
         $changePerms = function ($path) use ($io) {
             $currentPerms = fileperms($path) & 0777;
             $worldWritable = $currentPerms | 0007;
-            if ($worldWritable == $currentPerms) {
+            if ($worldWritable === $currentPerms) {
                 return;
             }
 
