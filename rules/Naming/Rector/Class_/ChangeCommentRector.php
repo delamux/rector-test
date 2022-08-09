@@ -67,12 +67,13 @@ CODE_SAMPLE
          * @var PhpDocInfo $phpDocInfo
          */
         $phpDocInfo = $node->getAttribute(AttributeKey::PHP_DOC_INFO);
+        dd($phpDocInfo);
 
         if ($phpDocInfo->hasByName('Hello Jorge')) {
             return null;
         }
 
-        $phpDocInfo->addTagValueNode();
+        $phpDocInfo->getTags();
 
         return $node;
     }
